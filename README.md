@@ -4,7 +4,40 @@ OpenRC README
 OpenRC is a dependency-based init system that works with the
 system-provided init program, normally `/sbin/init`.
 
-## Installation
+## Debian Packaging for OpenRC 0.43.5 Metztli build hack
+
+Please make sure to fulfill software dependencies listed in debian/control file.
+
+Subsequently...
+
+Once inside metztli-openrc-0.43.5 directory:
+
+`ln -s debian/patches`
+
+`quilt push -a --fuzz=0`
+
+`dpkg-buildpackage [-d] -F -us -uc -jX -T binary-arch,binary-indep`
+
+ where option -d implies ignore dependencies listed in debian/control file
+ (only if you absolutely know those dependencies are fulfilled, else build fails)
+
+ and X stands for number of CPUs/cores assigned to the build procedure.
+ please see man dpkg-buildpackage for more elaborate explanation(s).
+
+When build finishes, generated .deb files will be found at parent directory.
+
+OpenRC builds under Metztli Reiser4 / Debian Buster GCC8/Bullseye GCC10 AMD64
+
+[Metztli IT OpenRC] (https://tenochtitlan.city/@metztli/108531009118817304)
+
+## Metztli Reiser4 / Debian backports Installation
+
+Use dpkg -i to install .deb files generated in the above procedure. 
+
+## NOTE: if OpenRC (other software) is built and installed as original instructions below,
+   the user will have dependency issues installing related .deb software packages in future.
+
+## Installation 
 
 OpenRC requires GNU make.
 

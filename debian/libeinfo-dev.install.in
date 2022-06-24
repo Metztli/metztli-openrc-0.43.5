@@ -1,0 +1,4 @@
+debian/tmp@SHLIBDIR@/libeinfo.so       /usr@SHLIBDIR@
+debian/tmp/usr/include/einfo.h         /usr/include
+debian/tmp/einfo.pc  /usr/lib/x86_64-linux-gnu/pkgconfig
+debian/tmp/usr/share/man/man3/e*       /usr/share/man/man3

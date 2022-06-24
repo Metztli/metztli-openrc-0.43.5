@@ -1,0 +1,44 @@
+From 88f04a9a983d525123b8a901c38e703124d6774c Mon Sep 17 00:00:00 2001
+From: Metztli Information Technology <jose@metztli.it>
+Date: Sun, 12 Jun 2022 23:05:51 -0700
+Subject: [PATCH] Ic ome (Second) commit openrc 0.43.5 fix lib paths
+
+---
+ mk/lib.mk | 5 +++--
+ mk/sys.mk | 2 +-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/mk/lib.mk b/mk/lib.mk
+index 290bf91..4eca205 100644
+--- a/mk/lib.mk
++++ b/mk/lib.mk
+@@ -56,8 +56,9 @@ install: all
+ ifeq (${MKSTATICLIBS},yes)
+ 	${INSTALL} -m ${LIBMODE} lib${LIB}.a ${DESTDIR}${LIBDIR}
+ endif
+-	${INSTALL} -m ${LIBMODE} ${SHLIB_NAME} ${DESTDIR}${LIBDIR}
+-	ln -fs ${SHLIB_NAME} ${DESTDIR}${LIBDIR}/${SHLIB_LINK}
++	${INSTALL} -d ${DESTDIR}${SHLIBDIR}
++	${INSTALL} -m ${LIBMODE} ${SHLIB_NAME} ${DESTDIR}${SHLIBDIR}
++	ln -fs ${SHLIB_NAME} ${DESTDIR}${SHLIBDIR}/${SHLIB_LINK}
+ 	${INSTALL} -d ${DESTDIR}${INCDIR}
+ 	for x in ${INCS}; do ${INSTALL} -m ${INCMODE} $$x ${DESTDIR}${INCDIR}; done
+ 
+diff --git a/mk/sys.mk b/mk/sys.mk
+index 0618907..92bb55e 100644
+--- a/mk/sys.mk
++++ b/mk/sys.mk
+@@ -52,9 +52,9 @@ _LIBNAME:=		$(shell ${_LIBNAME_SH})
+ LIBNAME?=		${_LIBNAME}
+ LIBDIR?=		${UPREFIX}/${LIBNAME}
+ LIBMODE?=		0644
++SHLIBDIR?=		${PREFIX}/${LIBNAME}
+ 
+ LIBEXECDIR?=		${PREFIX}/libexec/rc
+-PKGCONFIGDIR?= ${UPREFIX}/${LIBNAME}/pkgconfig
+ 
+ MANPREFIX?=		${UPREFIX}/share
+ MANDIR?=		${MANPREFIX}/man
+-- 
+2.34.1
+

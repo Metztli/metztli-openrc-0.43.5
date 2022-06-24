@@ -1,0 +1,26 @@
+From 3d07ce10fb85cae4259f95c56a95ebcb923b3b7d Mon Sep 17 00:00:00 2001
+From: Metztli Information Technology <jose@metztli.it>
+Date: Mon, 20 Jun 2022 17:37:14 -0700
+Subject: [PATCH] Ic ome (Second) commit openrc-0.43.5 add prefix Metztli IT to
+ OpenRC in src/rc/rc.c
+
+---
+ src/rc/rc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rc/rc.c b/src/rc/rc.c
+index ef46925..c20ebba 100644
+--- a/src/rc/rc.c
++++ b/src/rc/rc.c
+@@ -467,7 +467,7 @@ do_sysinit()
+ 		run_program(INITEARLYSH);
+ 
+ 	uname(&uts);
+-	printf("\n   %sOpenRC %s" VERSION "%s is starting up %s",
++	printf("\n   %sMetztli IT OpenRC %s" VERSION "%s is starting up %s",
+ 	    ecolor(ECOLOR_GOOD), ecolor(ECOLOR_HILITE),
+ 	    ecolor(ECOLOR_NORMAL), ecolor(ECOLOR_BRACKET));
+ #ifdef BRANDING
+-- 
+2.34.1
+
